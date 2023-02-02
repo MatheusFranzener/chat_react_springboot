@@ -3,16 +3,19 @@ import { over } from 'stompjs';
 import SockJS from 'sockjs-client';
 
 var stompClient = null;
+
 const ChatRoom = () => {
     const [privateChats, setPrivateChats] = useState(new Map());
     const [publicChats, setPublicChats] = useState([]);
     const [tab, setTab] = useState("CHATROOM");
+
     const [userData, setUserData] = useState({
         username: '',
         receivername: '',
         connected: false,
         message: ''
     });
+    
     useEffect(() => {
         console.log(userData);
     }, [userData]);
@@ -70,7 +73,6 @@ const ChatRoom = () => {
 
     const onError = (err) => {
         console.log(err);
-
     }
 
     const handleMessage = (event) => {
@@ -116,6 +118,7 @@ const ChatRoom = () => {
     const registerUser = () => {
         connect();
     }
+    
     return (
         <div className="container">
             {userData.connected ?
